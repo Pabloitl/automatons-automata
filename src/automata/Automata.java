@@ -1,5 +1,7 @@
 package automata;
 
+import java.util.Set;
+
 public class Automata {
     private State initialState;
     private State currentState;
@@ -24,5 +26,9 @@ public class Automata {
 
     public State getInitialState() {
         return initialState;
+    }
+
+    public Set<Character> getAlphabet() {
+        return initialState.getAlphabet();
     }
 }

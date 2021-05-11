@@ -1,6 +1,7 @@
 package automata;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class State {
     private String name;
@@ -32,6 +33,10 @@ public class State {
 
     public String getName() {
         return name;
+    }
+
+    public Set<Character> getAlphabet() {
+        return transitions.keySet();
     }
 
     @Override
