@@ -18,8 +18,6 @@ public class Equivalence {
     }
 
     private static boolean compareAlphabets(Set<Character> a1, Set<Character> a2) {
-        if (a1.size() != a2.size()) return false;
-
         return a1.containsAll(a2) && a2.containsAll(a1);
     }
 
