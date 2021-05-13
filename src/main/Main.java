@@ -17,6 +17,5 @@ public class Main {
         }
 
         System.out.println(Equivalence.test(automata1, automata2));
-
     }
 }
