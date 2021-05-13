@@ -1,51 +1,22 @@
 package main;
 
 import automata.Automata;
-import automata.AutomataBuilder;
 import automata.operations.Equivalence;
+import io.AutomataReader;
 
 public class Main {
     public static void main(String[] args) {
-        Automata automata = new AutomataBuilder()
-            .addState("1")
-            .addState("2")
-            .addState("3")
-            .addState("4")
-            .addTransition("1", 'a', "1")
-            .addTransition("1", 'b', "2")
-            .addTransition("1", 'c', "1")
-            .addTransition("2", 'a', "4")
-            .addTransition("2", 'b', "4")
-            .addTransition("2", 'c', "3")
-            .addTransition("3", 'a', "3")
-            .addTransition("3", 'b', "2")
-            .addTransition("3", 'c', "3")
-            .addTransition("4", 'a', "4")
-            .addTransition("4", 'b', "4")
-            .addTransition("4", 'c', "4")
-            .setInitialState("1")
-            .setFinalState("1")
-            .setFinalState("3")
-            .get();
+        Automata automata1 = null, automata2 = null;
 
-        Automata automata2 = new AutomataBuilder()
-            .addState("1")
-            .addState("2")
-            .addState("3")
-            .addTransition("1", 'a', "1")
-            .addTransition("1", 'b', "2")
-            .addTransition("1", 'c', "1")
-            .addTransition("2", 'a', "3")
-            .addTransition("2", 'b', "3")
-            .addTransition("2", 'c', "1")
-            .addTransition("3", 'a', "3")
-            .addTransition("3", 'b', "3")
-            .addTransition("3", 'c', "3")
-            .setInitialState("1")
-            .setFinalState("1")
-            .get();
+        try {
+            automata1 = AutomataReader.fromFile("resources/automata1.txt");
+            automata2 = AutomataReader.fromFile("resources/automata2.txt");
+        } catch(Exception e){
+            e.printStackTrace();
+            System.exit(1);
+        }
 
-        System.out.println(Equivalence.test(automata, automata2));
+        System.out.println(Equivalence.test(automata1, automata2));
 
     }
 }
