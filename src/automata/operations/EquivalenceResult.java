@@ -44,15 +44,15 @@ public class EquivalenceResult {
     public String toString() {
         StringBuilder repr = new StringBuilder();
 
-        repr.append("M1\tM2\t");
+        repr.append("|\tM1\tM2\t|");
         for (Character a : alphabet) {
-            repr.append(a + "(M1)\t" + a + "(M2)\t");
+            repr.append("|\t" + a + "(M1)\t" + a + "(M2)\t|");
         }
         repr.append("\n");
 
         for (ArrayList<Pair<State>> col : table) {
             col.stream()
-                .forEach(p -> repr.append(p.first().getName() + "\t" + p.second().getName() + "\t"));
+                .forEach(p -> repr.append("|\t" + p.first().getName() + "\t" + p.second().getName() + "\t|"));
             repr.append("\n");
         }
 
