@@ -1,14 +1,11 @@
-addState 1
-addState 2
-addState 3
-addTransition 1 a 1
-addTransition 1 b 2
-addTransition 1 c 1
-addTransition 2 a 3
-addTransition 2 b 3
-addTransition 2 c 1
-addTransition 3 a 3
-addTransition 3 b 3
-addTransition 3 c 3
-setInitialState 1
-setFinalState 1
+addState A
+addState B
+addState C
+addTransition A 0 A
+addTransition A 1 B
+addTransition B 0 C
+addTransition B 1 B
+addTransition C 0 A
+addTransition C 1 B
+setInitialState A
+setFinalState C
