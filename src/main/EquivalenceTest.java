@@ -4,7 +4,7 @@ import automata.Automata;
 import automata.operations.Equivalence;
 import io.AutomataReader;
 
-public class Main {
+public class EquivalenceTest {
     public static void main(String[] args) {
         Automata automata1 = null, automata2 = null;
 

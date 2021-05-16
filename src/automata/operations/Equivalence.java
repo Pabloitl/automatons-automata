@@ -8,6 +8,7 @@ import utils.Pair;
 
 import automata.Automata;
 import automata.State;
+import automata.results.EquivalenceResult;
 
 public class Equivalence {
     public static EquivalenceResult test(Automata m1, Automata m2) {

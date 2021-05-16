@@ -1,6 +1,7 @@
 package automata;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class AutomataBuilder {
     HashMap<String, State> states;
@@ -37,6 +38,8 @@ public class AutomataBuilder {
     }
 
     public Automata get() {
+        automata.setStates(new HashSet<State>(states.values()));
+
         return automata;
     }
 }
