@@ -1,6 +1,8 @@
 package automata.results;
 
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import automata.Automata;
 import automata.State;
@@ -15,6 +17,10 @@ public class MinimizationResult {
 
     public void addStep(Pair<State> states, EquivalenceResult table, Automata m) {
         steps.add(new Step(states, table, m));
+    }
+
+    public void addStep(Pair<State> states, EquivalenceResult table, Automata m, Set<State> unreachableStates) {
+        steps.add(new Step(states, table, m, unreachableStates));
     }
 
     @Override
@@ -32,10 +38,17 @@ public class MinimizationResult {
         protected EquivalenceResult table;
         protected String automataRepr;
 
+        protected Set<State> unreachableStates;
+
         public Step(Pair<State> states, EquivalenceResult table, Automata m) {
             this.states = states;
             this.table = table;
             automataRepr = m.toString();
+        }
+
+        public Step(Pair<State> states, EquivalenceResult table, Automata m, Set<State> unreachableStates) {
+            this(states, table, m);
+            this.unreachableStates = unreachableStates;
         }
 
         @Override
@@ -50,6 +63,13 @@ public class MinimizationResult {
             repr.append("Se elimina " + states.second().getName() + "\n\n");
 
             repr.append(automataRepr).append("\n");
+
+            if (unreachableStates != null && !unreachableStates.isEmpty())
+                repr.append("Se eliminaron estados inalcanzables"
+                        + unreachableStates.stream()
+                        .map(State::getName)
+                        .collect(Collectors.joining(", ")))
+                    .append("\n");
 
             return repr.toString();
         }

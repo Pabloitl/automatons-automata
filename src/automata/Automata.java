@@ -67,10 +67,16 @@ public class Automata {
         }
     }
 
-    public void removeUnreacheableStates() {
+    public Set<State> removeUnreacheableStates() {
         Set<State> reachableStates = getReachableStates();
+        Set<State> removedStates;
+
+        states.removeAll(reachableStates);
+        removedStates = states;
 
         setStates(reachableStates);
+
+        return removedStates;
     }
 
     private Set<State> getReachableStates() {

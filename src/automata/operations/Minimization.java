@@ -35,8 +35,7 @@ public class Minimization {
                         continue;
 
                     m.replaceState(state2, state1);
-                    m.removeUnreacheableStates();
-                    res.addStep(statesPair, compatible, m);
+                    res.addStep(statesPair, compatible, m, m.removeUnreacheableStates());
 
                     states = m.getStates();
                     seen.clear();
