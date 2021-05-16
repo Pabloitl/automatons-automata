@@ -78,6 +78,7 @@ public class Automata {
         Queue<State> statesQueue = new LinkedList<>();
 
         statesQueue.add(initialState);
+        seen.add(initialState);
 
         while (!statesQueue.isEmpty()) {
             State state = statesQueue.poll();
