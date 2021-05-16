@@ -54,6 +54,9 @@ public class Automata {
     public void replaceState(State stateToReplace, State replacement) {
         states.remove(stateToReplace);
 
+        if (stateToReplace == initialState)
+            initialState = replacement;
+
         for (State state : states) {
             for (char a : state.getAlphabet()) {
                 if (state.transition(a) != stateToReplace)
@@ -97,8 +100,12 @@ public class Automata {
     public String toString() {
         StringBuilder repr = new StringBuilder();
 
-        states.stream()
-            .forEach(repr::append);
+        for (State state : states) {
+            if (state == initialState) repr.append("(inicial)\n");
+            if (state.isFinal()) repr.append("(final)\n");
+
+            repr.append(state);
+        }
 
         return repr.toString();
     }

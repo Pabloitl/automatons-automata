@@ -49,7 +49,7 @@ public class MinimizationResult {
 
             repr.append("Se elimina " + states.second().getName() + "\n\n");
 
-            repr.append(automataRepr);
+            repr.append(automataRepr).append("\n");
 
             return repr.toString();
         }

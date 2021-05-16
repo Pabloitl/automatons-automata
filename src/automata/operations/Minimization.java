@@ -35,9 +35,10 @@ public class Minimization {
                         continue;
 
                     m.replaceState(state2, state1);
-                    m.removeUnreacheableStates();
                     res.addStep(statesPair, compatible, m);
+
                     states = m.getStates();
+                    seen.clear();
                     break combinations;
                 }
             }
